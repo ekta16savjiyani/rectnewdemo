@@ -44,6 +44,8 @@ class EditPage extends Component {
             menu_id,
             page_id
             }
+            console.log("ygfyudgf");
+            console.log(data);
 this.props.updatePage(data);
   }
 

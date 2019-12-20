@@ -45,7 +45,7 @@ class AllPage extends Component {
   }
 
   const mapStateToProps = (state) => {
-    // console.log(state);
+     console.log(state);
     return {
         pages : state.pageStore.page,
         pageEdit : state.pageStore.pageEdit,

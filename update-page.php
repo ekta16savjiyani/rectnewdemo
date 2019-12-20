@@ -12,12 +12,9 @@ $dataObject = json_decode(file_get_contents("php://input"));
 if(isset($dataObject->page)){
 	$data = $dataObject->page;
 	    $insertPage = mysqli_query($db_conn,"UPDATE `pages` SET page_title = '$data->page_title',page_detail='$data->page_detail',menu_id='$data->menu_id' WHERE page_id='$data->page_id')");
-        if($insertPage){
+        
             echo json_encode(["data"=>$data]);
-        }
-        else{
-            echo json_encode(["success"=>0,"msg"=>"Page Not Updated!"]);
-        }
+        
    
 }
 else{

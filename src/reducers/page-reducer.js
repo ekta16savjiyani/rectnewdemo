@@ -52,6 +52,22 @@ export default (state=defaultState, action={}) => {
         loading: true,
       }
     }
+    case 'UPDATE_PAGE_FULFILLED': {
+       const data = action.payload.data.data;
+       return {
+        page : state,
+        pageEdit : 0
+        
+      }
+       
+      
+    }
+    case 'UPDATE_PAGE_PENDING': {
+      return {
+        ...state,
+        loading: true,
+      }
+    }
     case 'ADD_PAGE_FULFILLED': {
       return {
       ...state,
