@@ -11,6 +11,15 @@ export function fetchMenu(){
   }
 }
 
+export function editMenu(id){
+  return dispatch => {
+    dispatch({
+      type: 'EDIT_MENU',
+      payload: client.post(url+"edit-menu.php",{"id":id})
+    })
+  }
+}
+
 
 export function deleteMenu(menuid){
   return dispatch => {

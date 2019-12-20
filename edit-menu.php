@@ -7,12 +7,17 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 require 'db_connection.php';
 
 // POST DATA
-$dataObject = json_decode(file_get_contents("php://input"));
-	$data = $dataObject->page;
-if(isset($dataObject->page)){
-	    $insertPage = mysqli_query($db_conn,"UPDATE `pages` SET page_title = '$data->page_title',page_detail='$data->page_detail',menu_id='$data->menu_id' WHERE page_id='$data->page_id'");
+$data = json_decode(file_get_contents("php://input"));
+if($data->id != ''){
+        $allPages = mysqli_query($db_conn,"SELECT * FROM `menu_items` WHERE id=".$data->id);
         
-            echo json_encode(["data"=>$data]);
+            if(mysqli_num_rows($allPages)  > 0) {
+            $allPages = mysqli_fetch_array($allPages,MYSQLI_ASSOC);
+            echo json_encode(["id"=>$allPages['id']]);
+        }
+        else{
+            echo json_encode(["success"=>0,"msg"=>"Page Not Inserted!"]);
+        }
         
    
 }

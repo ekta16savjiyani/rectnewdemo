@@ -55,7 +55,8 @@ export default (state=defaultState, action={}) => {
     case 'UPDATE_PAGE_FULFILLED': {
        const data = action.payload.data.data;
        return {
-        page : state,
+        ...state,
+        page: state.page.map(item => item.page_id === data.page_id ? data : item),
         pageEdit : 0
         
       }
