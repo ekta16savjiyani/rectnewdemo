@@ -20,6 +20,24 @@ export function editMenu(id){
   }
 }
 
+export function updateMenu(data){
+  return dispatch => {
+    dispatch({
+      type: 'UPDATE_MENU',
+      payload: client.post(url+"update-menu.php",{data})
+    })
+  }
+}
+
+export function getMenuPage(){
+  return dispatch => {
+    dispatch({
+      type: 'GET_MENU_PAGE',
+      payload: client.get(url+"get-menudetails.php")
+    })
+  }
+}
+
 
 export function deleteMenu(menuid){
   return dispatch => {

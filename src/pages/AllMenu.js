@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import AddMenu from './AddMenu';
+import EditMenu from './EditMenu';
 import { connect } from 'react-redux';
 import { fetchMenu, deleteMenu , editMenu } from '../actions/menu-actions';
 
@@ -8,18 +9,21 @@ class AllMenu extends Component {
   constructor(props){
     super(props);
     this.handleEdit = this.handleEdit.bind(this);
+    
   }
   componentDidMount() {
     this.props.fetchMenu();
-    console.log(this.props.editmenu);
+    
   }
 
   handleEdit(e,id) {
     this.props.editMenu(id);
+    // this.setState({"editmenuname":this.props.editmenu[0].id});
   }
   handleDelete = (e,data) => {
     this.props.deleteMenu(data);
   }
+  
 
   render() {
     return (
@@ -28,15 +32,7 @@ class AllMenu extends Component {
         <AddMenu/>
       </div>
       {this.props.isMenuEdit && 
-      <div>
-      <div className="form-group col-sm-6">
-                    <label className="font-weight-bold">Menu Name</label>
-                    <input type="text" name="menu_name" ref={(val) => this.menuname = val} className="form-control" placeholder="Name"/>
-                </div>
-                <div className="form-group col-sm-12 text-right">
-                    <button type="submit" className="btn btn-primary">Edit Menu Item</button>
-                </div>
-                </div>
+      <EditMenu editmenu={this.props.editmenu} updateMenu = {this.props.updateMenu}/>
                 }
       <div>
       <ul>
@@ -55,6 +51,7 @@ class AllMenu extends Component {
 
 // Make contacts  array available in  props
 function mapStateToProps(state) {
+  console.log(state.menuStore);
   return {
       menuitems : state.menuStore.menuitems,
       isMenuEdit : state.menuStore.isMenuEdit,

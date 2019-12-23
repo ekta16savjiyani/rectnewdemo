@@ -12,13 +12,13 @@ class App extends Component {
       <Container>
         <div className="ui three item menu">
           <NavLink className="item" activeClassName="active" exact to="/">Home</NavLink>
-          <NavLink className="item" activeClassName="" exact to="/Menu">Menu</NavLink>
-          <NavLink className="item" activeClassName="" exact to="/Page">Page</NavLink>
+          <NavLink className="item" activeClassName="" exact to="/admin/menu">Menu</NavLink>
+          <NavLink className="item" activeClassName="" exact to="/admin/page">Page</NavLink>
           
         </div>
         <Route exact path="/" component={Home}/>
-        <Route exact path="/Menu" component={AllMenu}/>
-        <Route exact path="/Page" component={AllPage}/>
+        <Route exact path="/admin/menu" component={AllMenu}/>
+        <Route exact path="/admin/page" component={AllPage}/>
         
       </Container>
     );
